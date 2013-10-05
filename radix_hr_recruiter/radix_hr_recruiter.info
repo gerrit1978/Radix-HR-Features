@@ -1,0 +1,10 @@
+name = Radix HR Recruiter
+description = Recruiter functionalities
+core = 7.x
+package = Radix
+version = 7.x-1.0-alfa1
+project = radix_hr_recruiter
+dependencies[] = features
+dependencies[] = role_export
+features[features_api][] = api:2
+features[user_role][] = recruiter
