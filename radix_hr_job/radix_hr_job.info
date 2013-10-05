@@ -49,7 +49,6 @@ features[field_instance][] = node-job-field_job_skills_general
 features[field_instance][] = node-job-field_job_skills_it
 features[field_instance][] = node-job-field_job_workflow_state
 features[node][] = job
-features[taxonomy][] = career_status
 features[taxonomy][] = degree_level
 features[taxonomy][] = employment_type
 features[taxonomy][] = experience

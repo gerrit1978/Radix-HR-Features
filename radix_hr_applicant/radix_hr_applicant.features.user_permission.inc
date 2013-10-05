@@ -1,0 +1,71 @@
+<?php
+/**
+ * @file
+ * radix_hr_applicant.features.user_permission.inc
+ */
+
+/**
+ * Implements hook_user_default_permissions().
+ */
+function radix_hr_applicant_user_default_permissions() {
+  $permissions = array();
+
+  // Exported permission: 'administer profile types'.
+  $permissions['administer profile types'] = array(
+    'name' => 'administer profile types',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'administer profiles'.
+  $permissions['administer profiles'] = array(
+    'name' => 'administer profiles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'edit any cv profile'.
+  $permissions['edit any cv profile'] = array(
+    'name' => 'edit any cv profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'edit own cv profile'.
+  $permissions['edit own cv profile'] = array(
+    'name' => 'edit own cv profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'applicant' => 'applicant',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'view any cv profile'.
+  $permissions['view any cv profile'] = array(
+    'name' => 'view any cv profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'recruiter' => 'recruiter',
+    ),
+    'module' => 'profile2',
+  );
+
+  // Exported permission: 'view own cv profile'.
+  $permissions['view own cv profile'] = array(
+    'name' => 'view own cv profile',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'applicant' => 'applicant',
+    ),
+    'module' => 'profile2',
+  );
+
+  return $permissions;
+}

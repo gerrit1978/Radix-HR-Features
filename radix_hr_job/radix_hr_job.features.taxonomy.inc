@@ -9,29 +9,6 @@
  */
 function radix_hr_job_taxonomy_default_vocabularies() {
   return array(
-    'career_status' => array(
-      'name' => 'Career Status',
-      'machine_name' => 'career_status',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'degree_level' => array(
       'name' => 'Degree level',
       'machine_name' => 'degree_level',
