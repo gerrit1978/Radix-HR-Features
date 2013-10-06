@@ -12,6 +12,7 @@ dependencies[] = list
 dependencies[] = node
 dependencies[] = options
 dependencies[] = page_manager
+dependencies[] = panels
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = page_manager:pages_default:1
