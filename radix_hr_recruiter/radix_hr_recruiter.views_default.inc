@@ -34,7 +34,8 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Opnieuw instellen';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -327,8 +328,34 @@ function radix_hr_recruiter_views_default_views() {
     'application' => 'application',
   );
 
-  /* Display: All applications for this job */
-  $handler = $view->new_display('panel_pane', 'All applications for this job', 'panel_pane_1');
+  /* Display: All Applications */
+  $handler = $view->new_display('panel_pane', 'All Applications', 'panel_pane_1');
+
+  /* Display: Shortlist Applications */
+  $handler = $view->new_display('panel_pane', 'Shortlist Applications', 'panel_pane_2');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Inhoud: Gepubliceerd */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Inhoud: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'application' => 'application',
+  );
+  /* Filter criterion: Inhoud: Shortlisted (field_application_shortlist) */
+  $handler->display->display_options['filters']['field_application_shortlist_value']['id'] = 'field_application_shortlist_value';
+  $handler->display->display_options['filters']['field_application_shortlist_value']['table'] = 'field_data_field_application_shortlist';
+  $handler->display->display_options['filters']['field_application_shortlist_value']['field'] = 'field_application_shortlist_value';
+  $handler->display->display_options['filters']['field_application_shortlist_value']['value'] = array(
+    1 => '1',
+  );
   $translatables['recruiter_applications'] = array(
     t('Master'),
     t('Recruiter Sollicitaties'),
@@ -349,8 +376,9 @@ function radix_hr_recruiter_views_default_views() {
     t('CV'),
     t('[label]'),
     t('Alle'),
-    t('All applications for this job'),
+    t('All Applications'),
     t('View panes'),
+    t('Shortlist Applications'),
   );
   $export['recruiter_applications'] = $view;
 
