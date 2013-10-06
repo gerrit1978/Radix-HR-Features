@@ -1,5 +1,27 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Radix HR Recruiter feature.
  */
+
+include_once 'radix_hr_recruiter.features.inc';
+
+/**
+ * Implements hook_menu
+ */
+function radix_hr_recruiter_menu() {
+  $items = array();
+
+	$items['admin/recruiter'] = array(
+		'title' => 'Recruiter',
+		'description' => 'Recruiter functionalities.',
+		'position' => 'right',
+		'weight' => -11,
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('access administration pages'),
+		'file' =>  '/system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
+	);
+	
+	return $items;
+}
