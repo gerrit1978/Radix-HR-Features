@@ -330,6 +330,16 @@ function radix_hr_recruiter_views_default_views() {
 
   /* Display: All Applications */
   $handler = $view->new_display('panel_pane', 'All Applications', 'panel_pane_1');
+  $handler->display->display_options['argument_input'] = array(
+    'nid' => array(
+      'type' => 'panel',
+      'context' => 'entity:file.basename',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Inhoud: Nid',
+    ),
+  );
 
   /* Display: Shortlist Applications */
   $handler = $view->new_display('panel_pane', 'Shortlist Applications', 'panel_pane_2');
@@ -355,6 +365,16 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['filters']['field_application_shortlist_value']['field'] = 'field_application_shortlist_value';
   $handler->display->display_options['filters']['field_application_shortlist_value']['value'] = array(
     1 => '1',
+  );
+  $handler->display->display_options['argument_input'] = array(
+    'nid' => array(
+      'type' => 'panel',
+      'context' => 'entity:file.basename',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Inhoud: Nid',
+    ),
   );
   $translatables['recruiter_applications'] = array(
     t('Master'),
