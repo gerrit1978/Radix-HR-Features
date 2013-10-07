@@ -19,3 +19,41 @@ function radix_hr_recruiter_ctools_plugin_api($module = NULL, $api = NULL) {
 function radix_hr_recruiter_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
+
+/**
+ * Implements hook_default_rules_link().
+ */
+function radix_hr_recruiter_default_rules_link() {
+  $items = array();
+  $items['job_publish'] = entity_import('rules_link', '{
+    "settings" : {
+      "text" : "Publish",
+      "link_type" : "confirm",
+      "bundles" : { "job" : "job" },
+      "entity_link" : 1,
+      "confirm_question" : "Are you sure?",
+      "confirm_description" : "This job will be published."
+    },
+    "name" : "job_publish",
+    "label" : "Job Publish",
+    "path" : "job_publish",
+    "entity_type" : "node",
+    "rdf_mapping" : []
+  }');
+  $items['job_unpublish'] = entity_import('rules_link', '{
+    "settings" : {
+      "text" : "Unpublish",
+      "link_type" : "confirm",
+      "bundles" : { "job" : "job" },
+      "entity_link" : 1,
+      "confirm_question" : "Are you sure?",
+      "confirm_description" : "This job will be unpublished."
+    },
+    "name" : "job_unpublish",
+    "label" : "Job Unpublish",
+    "path" : "job_unpublish",
+    "entity_type" : "node",
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
