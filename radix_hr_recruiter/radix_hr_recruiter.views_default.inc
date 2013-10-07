@@ -596,6 +596,10 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Veld: Inhoud: Status */
+  $handler->display->display_options['fields']['field_job_workflow_state']['id'] = 'field_job_workflow_state';
+  $handler->display->display_options['fields']['field_job_workflow_state']['table'] = 'field_data_field_job_workflow_state';
+  $handler->display->display_options['fields']['field_job_workflow_state']['field'] = 'field_job_workflow_state';
   /* Veld: Inhoud: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -692,6 +696,7 @@ function radix_hr_recruiter_views_default_views() {
     t('laatste »'),
     t('author'),
     t('Titel'),
+    t('Status'),
     t('Updated date'),
     t('Naam'),
     t('Sollicitaties'),
