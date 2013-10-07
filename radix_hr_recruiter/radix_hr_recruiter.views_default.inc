@@ -359,12 +359,12 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'application' => 'application',
   );
-  /* Filter criterion: Inhoud: Shortlisted (field_application_shortlist) */
-  $handler->display->display_options['filters']['field_application_shortlist_value']['id'] = 'field_application_shortlist_value';
-  $handler->display->display_options['filters']['field_application_shortlist_value']['table'] = 'field_data_field_application_shortlist';
-  $handler->display->display_options['filters']['field_application_shortlist_value']['field'] = 'field_application_shortlist_value';
-  $handler->display->display_options['filters']['field_application_shortlist_value']['value'] = array(
-    1 => '1',
+  /* Filter criterion: Inhoud: Status (field_application_state) */
+  $handler->display->display_options['filters']['field_application_state_value']['id'] = 'field_application_state_value';
+  $handler->display->display_options['filters']['field_application_state_value']['table'] = 'field_data_field_application_state';
+  $handler->display->display_options['filters']['field_application_state_value']['field'] = 'field_application_state_value';
+  $handler->display->display_options['filters']['field_application_state_value']['value'] = array(
+    'shortlisted' => 'shortlisted',
   );
   $handler->display->display_options['argument_input'] = array(
     'nid' => array(

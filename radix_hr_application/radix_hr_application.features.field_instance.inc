@@ -171,12 +171,52 @@ function radix_hr_application_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-application-field_application_shortlist'
-  $field_instances['node-application-field_application_shortlist'] = array(
+  // Exported field_instance: 'node-application-field_application_rejection_msg'
+  $field_instances['node-application-field_application_rejection_msg'] = array(
+    'bundle' => 'application',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_application_rejection_msg',
+    'label' => 'Weigeringsboodschap',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 32,
+    ),
+  );
+
+  // Exported field_instance: 'node-application-field_application_state'
+  $field_instances['node-application-field_application_state'] = array(
     'bundle' => 'application',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 'pending',
       ),
     ),
     'deleted' => 0,
@@ -187,7 +227,7 @@ function radix_hr_application_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -197,9 +237,9 @@ function radix_hr_application_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_application_shortlist',
-    'label' => 'Shortlisted',
-    'required' => 1,
+    'field_name' => 'field_application_state',
+    'label' => 'Status',
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -208,7 +248,7 @@ function radix_hr_application_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 33,
     ),
   );
 
@@ -218,7 +258,8 @@ function radix_hr_application_field_default_field_instances() {
   t('Audience');
   t('Body');
   t('Job');
-  t('Shortlisted');
+  t('Status');
+  t('Weigeringsboodschap');
 
   return $field_instances;
 }

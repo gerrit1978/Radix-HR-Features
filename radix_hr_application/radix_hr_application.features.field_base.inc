@@ -86,13 +86,45 @@ function radix_hr_application_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_application_shortlist'
-  $field_bases['field_application_shortlist'] = array(
+  // Exported field_base: 'field_application_rejection_msg'
+  $field_bases['field_application_rejection_msg'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_application_shortlist',
+    'field_name' => 'field_application_rejection_msg',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_application_state'
+  $field_bases['field_application_state'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_application_state',
     'field_permissions' => array(
       'type' => 2,
     ),
@@ -106,8 +138,9 @@ function radix_hr_application_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Not in shortlist',
-        1 => 'In shortlist',
+        'pending' => 'Pending',
+        'shortlisted' => 'Shortlisted',
+        'rejected' => 'Rejected',
       ),
       'allowed_values_function' => '',
       'profile2_private' => FALSE,
