@@ -25,6 +25,19 @@ function radix_hr_recruiter_views_api($module = NULL, $api = NULL) {
  */
 function radix_hr_recruiter_default_rules_link() {
   $items = array();
+  $items['job_application_shortlist'] = entity_import('rules_link', '{
+    "settings" : {
+      "text" : "Shortlist Application",
+      "link_type" : "token",
+      "bundles" : { "application" : "application" },
+      "entity_link" : 1
+    },
+    "name" : "job_application_shortlist",
+    "label" : "Job Application Shortlist",
+    "path" : "job_application_shortlist",
+    "entity_type" : "node",
+    "rdf_mapping" : []
+  }');
   $items['job_publish'] = entity_import('rules_link', '{
     "settings" : {
       "text" : "Publish",

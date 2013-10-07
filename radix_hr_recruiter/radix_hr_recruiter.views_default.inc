@@ -128,6 +128,13 @@ function radix_hr_recruiter_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
+    'action::flag_node_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::node_make_unsticky_action' => array(
       'selected' => 0,
       'postpone_processing' => 0,
@@ -206,22 +213,8 @@ function radix_hr_recruiter_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'rules_component::rules_link_set_application_put_in_shortlist' => array(
+    'rules_component::rules_link_set_job_application_shortlist' => array(
       'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 1,
-      'label' => 'Put in shortlist',
-    ),
-    'rules_component::rules_link_set_application_remove_from_shortlis' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 1,
-      'label' => 'Remove from shortlist',
-    ),
-    'rules_component::rules_link_set_job_add_application' => array(
-      'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
