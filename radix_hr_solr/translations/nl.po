@@ -1,0 +1,30 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: bb_hr_solr.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-09-30 14:24+0200\n"
+"PO-Revision-Date: 2013-09-30 14:40+0100\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: bb_hr_solr.info:0
+msgid "BB HR Solr"
+msgstr ""
+
+#: bb_hr_solr.info:0
+msgid "Solr functionalities"
+msgstr "Solr functionaliteiten"
+
+#: bb_hr_solr.info:0
+msgid "BrightBrain"
+msgstr ""
