@@ -25,6 +25,21 @@ function radix_hr_recruiter_views_api($module = NULL, $api = NULL) {
  */
 function radix_hr_recruiter_default_rules_link() {
   $items = array();
+  $items['job_application_reject'] = entity_import('rules_link', '{
+    "settings" : {
+      "text" : "Reject application",
+      "link_type" : "confirm",
+      "bundles" : { "application" : "application" },
+      "entity_link" : 1,
+      "confirm_question" : "Reject application",
+      "confirm_description" : ""
+    },
+    "name" : "job_application_reject",
+    "label" : "Job application Reject",
+    "path" : "job_application_reject",
+    "entity_type" : "node",
+    "rdf_mapping" : []
+  }');
   $items['job_application_shortlist'] = entity_import('rules_link', '{
     "settings" : {
       "text" : "Shortlist Application",

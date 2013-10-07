@@ -213,6 +213,13 @@ function radix_hr_recruiter_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
+    'rules_component::rules_link_set_job_application_reject' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'rules_component::rules_link_set_job_application_shortlist' => array(
       'selected' => 1,
       'postpone_processing' => 0,
