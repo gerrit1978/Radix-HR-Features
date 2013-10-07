@@ -261,6 +261,10 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  /* Veld: Inhoud: Status */
+  $handler->display->display_options['fields']['field_application_state']['id'] = 'field_application_state';
+  $handler->display->display_options['fields']['field_application_state']['table'] = 'field_data_field_application_state';
+  $handler->display->display_options['fields']['field_application_state']['field'] = 'field_application_state';
   /* Veld: Field collection item: Voornaam */
   $handler->display->display_options['fields']['field_cv_pers_firstname']['id'] = 'field_cv_pers_firstname';
   $handler->display->display_options['fields']['field_cv_pers_firstname']['table'] = 'field_data_field_cv_pers_firstname';
@@ -391,6 +395,7 @@ function radix_hr_recruiter_views_default_views() {
     t('Profiel'),
     t('field collection item from field_cv_personal_information'),
     t('Post date'),
+    t('Status'),
     t('Naam'),
     t('[field_cv_pers_firstname] [field_cv_pers_lastname]'),
     t('CV'),
