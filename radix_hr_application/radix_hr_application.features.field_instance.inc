@@ -10,6 +10,80 @@
 function radix_hr_application_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'message-job_application_recruiter-field_job_application'
+  $field_instances['message-job_application_recruiter-field_job_application'] = array(
+    'bundle' => 'job_application_recruiter',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'message',
+    'field_name' => 'field_job_application',
+    'label' => 'Application',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'message-job_application_recruiter-field_message_audience'
+  $field_instances['message-job_application_recruiter-field_message_audience'] = array(
+    'bundle' => 'job_application_recruiter',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'message',
+    'field_name' => 'field_message_audience',
+    'label' => 'Audience',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'node-application-body'
   $field_instances['node-application-body'] = array(
     'bundle' => 'application',
@@ -140,6 +214,8 @@ function radix_hr_application_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Application');
+  t('Audience');
   t('Body');
   t('Job');
   t('Shortlisted');
