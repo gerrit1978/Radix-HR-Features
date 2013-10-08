@@ -217,15 +217,15 @@ function radix_hr_recruiter_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
+      'override_label' => 1,
+      'label' => 'Reject Application',
     ),
     'rules_component::rules_link_set_job_application_shortlist' => array(
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
+      'override_label' => 1,
+      'label' => 'Shortlist Application',
     ),
     'rules_component::rules_link_set_job_publish' => array(
       'selected' => 0,
@@ -347,6 +347,219 @@ function radix_hr_recruiter_views_default_views() {
 
   /* Display: Shortlist Applications */
   $handler = $view->new_display('panel_pane', 'Shortlist Applications', 'panel_pane_2');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Veld: Bulk operations: Inhoud */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
+  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::node_assign_owner_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::flag_node_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_make_unsticky_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_promote_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_save_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_publish_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpromote_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_make_sticky_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'show_all_tokens' => 1,
+        'display_values' => array(
+          '_all_' => '_all_',
+        ),
+      ),
+    ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
+    ),
+    'action::node_unpublish_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpublish_by_keyword_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_link_set_job_application_reject' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 1,
+      'label' => 'Reject Application',
+    ),
+    'rules_component::rules_link_set_job_application_shortlist' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 1,
+      'label' => 'Shortlist Application',
+    ),
+    'rules_component::rules_link_set_job_publish' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_link_set_job_unpublish' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::pathauto_node_update_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Veld: Inhoud: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Veld: Inhoud: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  /* Veld: Inhoud: Status */
+  $handler->display->display_options['fields']['field_application_state']['id'] = 'field_application_state';
+  $handler->display->display_options['fields']['field_application_state']['table'] = 'field_data_field_application_state';
+  $handler->display->display_options['fields']['field_application_state']['field'] = 'field_application_state';
+  /* Veld: Field collection item: Voornaam */
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['id'] = 'field_cv_pers_firstname';
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['table'] = 'field_data_field_cv_pers_firstname';
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['field'] = 'field_cv_pers_firstname';
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['relationship'] = 'field_cv_personal_information_value';
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['label'] = '';
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cv_pers_firstname']['element_label_colon'] = FALSE;
+  /* Veld: Field collection item: Familienaam */
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['id'] = 'field_cv_pers_lastname';
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['table'] = 'field_data_field_cv_pers_lastname';
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['field'] = 'field_cv_pers_lastname';
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['relationship'] = 'field_cv_personal_information_value';
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['label'] = 'Naam';
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['alter']['text'] = '[field_cv_pers_firstname] [field_cv_pers_lastname]';
+  /* Veld: Profiel: Label */
+  $handler->display->display_options['fields']['label']['id'] = 'label';
+  $handler->display->display_options['fields']['label']['table'] = 'profile';
+  $handler->display->display_options['fields']['label']['field'] = 'label';
+  $handler->display->display_options['fields']['label']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['label']['label'] = '';
+  $handler->display->display_options['fields']['label']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
+  /* Veld: Gebruiker: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = 'CV';
+  $handler->display->display_options['fields']['uid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['uid']['alter']['text'] = '[label]';
+  $handler->display->display_options['fields']['uid']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['uid']['alter']['path'] = 'profile-cv/[uid]';
+  $handler->display->display_options['fields']['uid']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Inhoud: Gepubliceerd */
@@ -488,6 +701,13 @@ function radix_hr_recruiter_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
+    'action::flag_node_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
     'action::node_make_unsticky_action' => array(
       'selected' => 0,
       'postpone_processing' => 0,
@@ -566,7 +786,14 @@ function radix_hr_recruiter_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'rules_component::rules_link_set_job_add_application' => array(
+    'rules_component::rules_link_set_job_application_reject' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'rules_component::rules_link_set_job_application_shortlist' => array(
       'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
@@ -577,15 +804,15 @@ function radix_hr_recruiter_views_default_views() {
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
+      'override_label' => 1,
+      'label' => 'Publish Job',
     ),
     'rules_component::rules_link_set_job_unpublish' => array(
       'selected' => 1,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
+      'override_label' => 1,
+      'label' => 'Unpublish Job',
     ),
     'action::pathauto_node_update_action' => array(
       'selected' => 0,
