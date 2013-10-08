@@ -89,6 +89,12 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['relationships']['field_cv_personal_information_value']['field'] = 'field_cv_personal_information_value';
   $handler->display->display_options['relationships']['field_cv_personal_information_value']['relationship'] = 'profile';
   $handler->display->display_options['relationships']['field_cv_personal_information_value']['delta'] = '0';
+  /* Relationship: Inhoud: Auteur */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid_1']['relationship'] = 'field_application_job_ref_target_id';
+  $handler->display->display_options['relationships']['uid_1']['label'] = 'author_job';
   /* Veld: Bulk operations: Inhoud */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
@@ -265,6 +271,24 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['fields']['field_application_state']['id'] = 'field_application_state';
   $handler->display->display_options['fields']['field_application_state']['table'] = 'field_data_field_application_state';
   $handler->display->display_options['fields']['field_application_state']['field'] = 'field_application_state';
+  /* Veld: Inhoud: Titel */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['relationship'] = 'field_application_job_ref_target_id';
+  $handler->display->display_options['fields']['title_1']['label'] = 'Job titel';
+  /* Veld: Gebruiker: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['alter']['text'] = '[label]';
+  $handler->display->display_options['fields']['uid']['alter']['path'] = 'profile-cv/[uid]';
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
   /* Veld: Field collection item: Voornaam */
   $handler->display->display_options['fields']['field_cv_pers_firstname']['id'] = 'field_cv_pers_firstname';
   $handler->display->display_options['fields']['field_cv_pers_firstname']['table'] = 'field_data_field_cv_pers_firstname';
@@ -281,26 +305,23 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['fields']['field_cv_pers_lastname']['label'] = 'Naam';
   $handler->display->display_options['fields']['field_cv_pers_lastname']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_cv_pers_lastname']['alter']['text'] = '[field_cv_pers_firstname] [field_cv_pers_lastname]';
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_cv_pers_lastname']['alter']['path'] = 'profile-cv/[uid]';
   /* Veld: Profiel: Label */
   $handler->display->display_options['fields']['label']['id'] = 'label';
   $handler->display->display_options['fields']['label']['table'] = 'profile';
   $handler->display->display_options['fields']['label']['field'] = 'label';
   $handler->display->display_options['fields']['label']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['label']['label'] = '';
-  $handler->display->display_options['fields']['label']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['label']['label'] = 'CV';
+  $handler->display->display_options['fields']['label']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['label']['alter']['path'] = 'profile-cv/[uid]';
   $handler->display->display_options['fields']['label']['element_label_colon'] = FALSE;
-  /* Veld: Gebruiker: Uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'users';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
-  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['uid']['label'] = 'CV';
-  $handler->display->display_options['fields']['uid']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['uid']['alter']['text'] = '[label]';
-  $handler->display->display_options['fields']['uid']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['uid']['alter']['path'] = 'profile-cv/[uid]';
-  $handler->display->display_options['fields']['uid']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Veld: Gebruiker: Naam */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['name']['label'] = 'Job Recruiter';
   /* Sort criterion: Inhoud: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -331,9 +352,114 @@ function radix_hr_recruiter_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'application' => 'application',
   );
+  /* Filter criterion: Inhoud: Titel */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Sollicitatie titel';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    115362423 => 0,
+    100482362 => 0,
+  );
+  /* Filter criterion: Field collection item: Voornaam (field_cv_pers_firstname) */
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['id'] = 'field_cv_pers_firstname_value';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['table'] = 'field_data_field_cv_pers_firstname';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['field'] = 'field_cv_pers_firstname_value';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['relationship'] = 'field_cv_personal_information_value';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['expose']['operator_id'] = 'field_cv_pers_firstname_value_op';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['expose']['label'] = 'Voornaam Sollicitant';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['expose']['operator'] = 'field_cv_pers_firstname_value_op';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['expose']['identifier'] = 'field_cv_pers_firstname_value';
+  $handler->display->display_options['filters']['field_cv_pers_firstname_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    115362423 => 0,
+    100482362 => 0,
+  );
+  /* Filter criterion: Field collection item: Familienaam (field_cv_pers_lastname) */
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['id'] = 'field_cv_pers_lastname_value';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['table'] = 'field_data_field_cv_pers_lastname';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['field'] = 'field_cv_pers_lastname_value';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['relationship'] = 'field_cv_personal_information_value';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['expose']['operator_id'] = 'field_cv_pers_lastname_value_op';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['expose']['label'] = 'Familienaam Sollicitant';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['expose']['operator'] = 'field_cv_pers_lastname_value_op';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['expose']['identifier'] = 'field_cv_pers_lastname_value';
+  $handler->display->display_options['filters']['field_cv_pers_lastname_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    115362423 => 0,
+    100482362 => 0,
+  );
+  /* Filter criterion: Inhoud: Titel */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'node';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'field_application_job_ref_target_id';
+  $handler->display->display_options['filters']['title_1']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
+  $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Job titel';
+  $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    115362423 => 0,
+    100482362 => 0,
+  );
+  /* Filter criterion: Gebruiker: Naam */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'users';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['relationship'] = 'uid_1';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Job Recruiter';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    115362423 => 0,
+    100482362 => 0,
+  );
+  /* Filter criterion: Inhoud: Status (field_application_state) */
+  $handler->display->display_options['filters']['field_application_state_value']['id'] = 'field_application_state_value';
+  $handler->display->display_options['filters']['field_application_state_value']['table'] = 'field_data_field_application_state';
+  $handler->display->display_options['filters']['field_application_state_value']['field'] = 'field_application_state_value';
+  $handler->display->display_options['filters']['field_application_state_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_application_state_value']['expose']['operator_id'] = 'field_application_state_value_op';
+  $handler->display->display_options['filters']['field_application_state_value']['expose']['label'] = 'Status';
+  $handler->display->display_options['filters']['field_application_state_value']['expose']['operator'] = 'field_application_state_value_op';
+  $handler->display->display_options['filters']['field_application_state_value']['expose']['identifier'] = 'field_application_state_value';
+  $handler->display->display_options['filters']['field_application_state_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    30037204 => 0,
+    115362423 => 0,
+    100482362 => 0,
+  );
 
-  /* Display: All Applications */
-  $handler = $view->new_display('panel_pane', 'All Applications', 'panel_pane_1');
+  /* Display: All Applications per job */
+  $handler = $view->new_display('panel_pane', 'All Applications per job', 'panel_pane_1');
   $handler->display->display_options['argument_input'] = array(
     'nid' => array(
       'type' => 'panel',
@@ -345,8 +471,8 @@ function radix_hr_recruiter_views_default_views() {
     ),
   );
 
-  /* Display: Shortlist Applications */
-  $handler = $view->new_display('panel_pane', 'Shortlist Applications', 'panel_pane_2');
+  /* Display: Shortlist Applications per job */
+  $handler = $view->new_display('panel_pane', 'Shortlist Applications per job', 'panel_pane_2');
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Veld: Bulk operations: Inhoud */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
@@ -593,6 +719,17 @@ function radix_hr_recruiter_views_default_views() {
       'label' => 'Inhoud: Nid',
     ),
   );
+
+  /* Display: Pagina */
+  $handler = $view->new_display('page', 'Pagina', 'page_1');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['path'] = 'admin/recruiter/applications';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'All Applications';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['recruiter_applications'] = array(
     t('Master'),
     t('Recruiter Sollicitaties'),
@@ -607,16 +744,23 @@ function radix_hr_recruiter_views_default_views() {
     t('author'),
     t('Profiel'),
     t('field collection item from field_cv_personal_information'),
+    t('author_job'),
     t('Post date'),
     t('Status'),
+    t('Job titel'),
+    t('[label]'),
     t('Naam'),
     t('[field_cv_pers_firstname] [field_cv_pers_lastname]'),
     t('CV'),
-    t('[label]'),
+    t('Job Recruiter'),
     t('Alle'),
-    t('All Applications'),
+    t('Sollicitatie titel'),
+    t('Voornaam Sollicitant'),
+    t('Familienaam Sollicitant'),
+    t('All Applications per job'),
     t('View panes'),
-    t('Shortlist Applications'),
+    t('Shortlist Applications per job'),
+    t('Pagina'),
   );
   $export['recruiter_applications'] = $view;
 
