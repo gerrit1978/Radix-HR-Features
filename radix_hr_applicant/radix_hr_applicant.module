@@ -90,6 +90,25 @@ function radix_hr_applicant_preprocess_entity(&$variables, $hook) {
 }
 
 /**
+ * Implements hook_field_access().
+ */
+function radix_hr_applicant_field_access($op, $field, $entity_type, $profile = NULL, $account = NULL) {
+/*   exit('hook_field_access aangeroepen'); */
+  if ($entity_type == 'profile2' && $op == 'view' && !user_access('administer profiles', $account)) {
+    if (in_array($field['field_name'], radix_hr_applicant_cv_private_fields())) {
+      if (!isset($profile)) {
+        return FALSE;
+      }
+      $account = isset($account) ? $account : $GLOBALS['user'];
+      if (!radix_hr_applicant_private_fields_view_access($field, $profile, $account)) {
+        return FALSE;
+      }
+    }
+  }
+}
+
+
+/**
  * Admin settings form.
  */
 function radix_hr_applicant_cv_settings($form) {
@@ -246,4 +265,44 @@ function radix_hr_applicant_field_collection_order_by_date(&$field_content_array
     }
   }
   
+}
+
+
+/**
+ * Determines whether a user has view access to a specific private field on the
+ * resume profile.
+ *
+ * The profile owner always has access, while for the other view access is
+ * denied by default. Modules can alter the access with
+ * recruiter_resume_private_fields_view_access().
+ *
+ * @param $field
+ *   The private field info for which the access should be determined.
+ * @param $profile
+ *   The resume profile the field is attached to.
+ * @param $account
+ *   The current acting user.
+ * @return boolean
+ *   Whether view access is allowed or not.
+ *
+ * @see hook_recruiter_resume_private_fields_view_access()
+ */
+function radix_hr_applicant_private_fields_view_access($field, $profile, $account) {
+  // Always grant view access to the profile owner.
+  if ($account->uid == $profile->uid) {
+    return TRUE;
+  }
+
+  // Allow modules to grant / deny access for all other cases.
+  $access = module_invoke_all('radix_hr_applicant_private_fields_view_access', $field, $profile, $account);
+
+  // Only grant access if at least one module granted access and no one denied
+  // access.
+  if (in_array(FALSE, $access, TRUE)) {
+    return FALSE;
+  }
+  elseif (in_array(TRUE, $access, TRUE)) {
+    return TRUE;
+  }
+  return FALSE;
 }
