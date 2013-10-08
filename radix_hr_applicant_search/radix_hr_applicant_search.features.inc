@@ -41,6 +41,7 @@ function radix_hr_applicant_search_default_search_api_index() {
       "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
+        "field_cv_state" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
         "search_api_viewed" : { "type" : "text" },
         "field_cv_job_preferences:field_cv_pref_career_status" : { "type" : "integer", "entity_type" : "taxonomy_term" },

@@ -41,6 +41,13 @@ function radix_hr_applicant_search_views_default_views() {
   $handler->display->display_options['fields']['pid']['id'] = 'pid';
   $handler->display->display_options['fields']['pid']['table'] = 'search_api_index_cv_index';
   $handler->display->display_options['fields']['pid']['field'] = 'pid';
+  /* Filter criterion: Indexed Profiel: CV status */
+  $handler->display->display_options['filters']['field_cv_state']['id'] = 'field_cv_state';
+  $handler->display->display_options['filters']['field_cv_state']['table'] = 'search_api_index_cv_index';
+  $handler->display->display_options['filters']['field_cv_state']['field'] = 'field_cv_state';
+  $handler->display->display_options['filters']['field_cv_state']['value'] = array(
+    'visible' => 'visible',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

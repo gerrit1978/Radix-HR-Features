@@ -87,8 +87,8 @@ function radix_hr_job_search_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Radix');
   t('Job search pages');
+  t('Radix');
   $export['job_search'] = $context;
 
   $context = new stdClass();
@@ -138,8 +138,8 @@ function radix_hr_job_search_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Radix');
   t('Frontpage blocks (job search)');
+  t('Radix');
   $export['job_search_front'] = $context;
 
   return $export;

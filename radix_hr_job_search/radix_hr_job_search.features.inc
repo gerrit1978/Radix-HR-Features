@@ -294,6 +294,12 @@ function radix_hr_job_search_default_search_api_server() {
             "table" : "search_api_db_cv_index_field_cv_it_skills_field_cv_it_skills_s",
             "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
             "boost" : "1.0"
+          },
+          "field_cv_state" : {
+            "table" : "search_api_db_cv_index",
+            "column" : "field_cv_state",
+            "type" : "string",
+            "boost" : "1.0"
           }
         }
       }
