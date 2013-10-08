@@ -21,6 +21,48 @@ function radix_hr_recruiter_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_flag_default_flags().
+ */
+function radix_hr_recruiter_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "CV Bookmarks".
+  $flags['cv_bookmarks'] = array(
+    'entity_type' => 'profile2',
+    'title' => 'CV Bookmarks',
+    'global' => 0,
+    'types' => array(
+      0 => 'cv',
+    ),
+    'flag_short' => 'Bookmark CV',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Unmark CV',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'weight' => 0,
+    'show_in_links' => array(
+      'account' => 'account',
+      'page' => 'page',
+      'teaser' => 0,
+      'token' => 0,
+    ),
+    'show_as_field' => 0,
+    'show_on_form' => 0,
+    'access_author' => '',
+    'show_contextual_link' => 0,
+    'api_version' => 3,
+    'module' => 'radix_hr_recruiter',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+
+}
+
+/**
  * Implements hook_default_rules_link().
  */
 function radix_hr_recruiter_default_rules_link() {
