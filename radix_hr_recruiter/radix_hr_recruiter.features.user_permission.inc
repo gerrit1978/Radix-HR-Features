@@ -20,6 +20,16 @@ function radix_hr_recruiter_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: 'access administration pages'.
+  $permissions['access administration pages'] = array(
+    'name' => 'access administration pages',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'recruiter' => 'recruiter',
+    ),
+    'module' => 'system',
+  );
+
   // Exported permission: 'administer actions'.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
