@@ -16,6 +16,10 @@ function radix_hr_applicant_theme() {
     'render element' => 'elements',
     'template' => 'profile--cv--teaser',
     ),
+    // Theme function for resume state info block output.
+    'radix_hr_applicant_get_state_info_box' => array(
+      'variables' => array('state' => NULL, 'state_info' => NULL, 'link' => NULL),
+    ),    
   );
 }
 
@@ -305,4 +309,85 @@ function radix_hr_applicant_private_fields_view_access($field, $profile, $accoun
     return TRUE;
   }
   return FALSE;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function radix_hr_applicant_block_info() {
+  $blocks['cv_state_info'] = array(
+    'info' => t('Current user resume state information'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function radix_hr_applicant_block_view($delta) {
+  switch ($delta) {
+    case 'cv_state_info':
+      return _radix_hr_applicant_block_cv_state_info_content();
+  }
+}
+
+/**
+ * Resume state info block content.
+ *
+ * For users that have access to a resume it will show a state info text
+ * and the corresponding show/hide resume links.
+ */
+function _radix_hr_applicant_block_cv_state_info_content() {
+  $menu_item = menu_get_item();
+  $base = profile2_page_get_base_path(profile2_type_load('cv'));
+  if ($menu_item['path'] == $base) {
+    // Get resume if user is logged in and has a resume.
+    global $user;
+    $profile = !empty($user) ? profile2_load_by_user($user, 'cv') : NULL;
+  }
+  elseif ($menu_item['path'] == $base . '/%') {
+    // Get other users resume if we are currently viewing one.
+    $p = $menu_item['page_arguments'][0];
+    $profile = is_object($p) ? profile2_load_by_user($p->uid, 'cv') : NULL;
+  }
+
+  if (!empty($profile) && profile2_access('edit', $profile)) {
+    // Get state info text.
+    $state = radix_hr_applicant_cv_get_state($profile);
+    $state_info = radix_hr_applicant_cv_get_state_info($state);
+
+/*
+    // Get the hide or show resume link, either of which is available right now.
+    $link = rules_link_render('resume_set_hidden', $profile->pid, drupal_get_destination());
+    if (empty($link)) {
+      $link = rules_link_render('resume_set_visible', $profile->pid, drupal_get_destination());
+    }
+*/
+
+    return array(
+      'subject' => t('Resume @state', array('@state' => $state)),
+      'content' => array(
+        'body' => array(
+          '#theme' => 'radix_hr_applicant_get_state_info_box',
+          '#state' => $state,
+          '#state_info' => $state_info,
+//          '#link' => $link,
+        ),
+      ),
+    );
+  }
+  return NULL;
+}
+
+
+/**
+ * Themes the resume state info block content.
+ */
+function theme_radix_hr_applicant_get_state_info_box($variables) {
+  return
+    '<div class="state-info-box state-info-state-' . $variables['state'] . '">' .
+    '<p class="state-info-text">' . $variables['state_info'] . '</p>' .
+    '<div class="state-info-link">' . render($variables['link']) . '</div>' .
+    '</div>';
 }
