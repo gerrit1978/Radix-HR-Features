@@ -357,22 +357,20 @@ function _radix_hr_applicant_block_cv_state_info_content() {
     $state = radix_hr_applicant_cv_get_state($profile);
     $state_info = radix_hr_applicant_cv_get_state_info($state);
 
-/*
     // Get the hide or show resume link, either of which is available right now.
-    $link = rules_link_render('resume_set_hidden', $profile->pid, drupal_get_destination());
+    $link = rules_link_render('cv_set_hidden', $profile->pid, drupal_get_destination());
     if (empty($link)) {
-      $link = rules_link_render('resume_set_visible', $profile->pid, drupal_get_destination());
+      $link = rules_link_render('cv_set_visible', $profile->pid, drupal_get_destination());
     }
-*/
 
     return array(
-      'subject' => t('Resume @state', array('@state' => $state)),
+      'subject' => t('CV @state', array('@state' => $state)),
       'content' => array(
         'body' => array(
           '#theme' => 'radix_hr_applicant_get_state_info_box',
           '#state' => $state,
           '#state_info' => $state_info,
-//          '#link' => $link,
+          '#link' => $link,
         ),
       ),
     );
