@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function radix_hr_applicant_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -75,6 +78,42 @@ function radix_hr_applicant_default_profile2_type() {
     "label" : "CV",
     "weight" : "0",
     "data" : { "registration" : 0, "use_page" : 1 },
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
+
+/**
+ * Implements hook_default_rules_link().
+ */
+function radix_hr_applicant_default_rules_link() {
+  $items = array();
+  $items['cv_set_hidden'] = entity_import('rules_link', '{
+    "settings" : {
+      "text" : "Hide CV",
+      "link_type" : "confirm",
+      "bundles" : { "cv" : "cv" },
+      "entity_link" : 0,
+      "confirm_question" : "Are you sure you want to hide your CV?",
+      "confirm_description" : "Hiding your resume will exclude you from searches and being contacted by companies. You can always re-activate your resume. "
+    },
+    "name" : "cv_set_hidden",
+    "label" : "CV set hidden",
+    "path" : "cv_set_hidden",
+    "entity_type" : "profile2",
+    "rdf_mapping" : []
+  }');
+  $items['cv_set_visible'] = entity_import('rules_link', '{
+    "settings" : {
+      "text" : "Toon CV",
+      "link_type" : "token",
+      "bundles" : { "cv" : "cv" },
+      "entity_link" : 1
+    },
+    "name" : "cv_set_visible",
+    "label" : "CV set visible",
+    "path" : "cv_set_visible",
+    "entity_type" : "profile2",
     "rdf_mapping" : []
   }');
   return $items;
