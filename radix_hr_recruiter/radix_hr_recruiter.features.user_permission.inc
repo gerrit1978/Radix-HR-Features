@@ -39,6 +39,26 @@ function radix_hr_recruiter_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'flag cv_bookmarks'.
+  $permissions['flag cv_bookmarks'] = array(
+    'name' => 'flag cv_bookmarks',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'recruiter' => 'recruiter',
+    ),
+    'module' => 'flag',
+  );
+
+  // Exported permission: 'unflag cv_bookmarks'.
+  $permissions['unflag cv_bookmarks'] = array(
+    'name' => 'unflag cv_bookmarks',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'recruiter' => 'recruiter',
+    ),
+    'module' => 'flag',
+  );
+
   // Exported permission: 'view the administration theme'.
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
