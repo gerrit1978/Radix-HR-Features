@@ -142,5 +142,37 @@ function radix_hr_job_search_context_default_contexts() {
   t('Radix');
   $export['job_search_front'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'job_search_saved_search';
+  $context->description = '';
+  $context->tag = 'Radix';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'jobs:page' => 'jobs:page',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'search_api_saved_searches-job_index' => array(
+          'module' => 'search_api_saved_searches',
+          'delta' => 'job_index',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Radix');
+  $export['job_search_saved_search'] = $context;
+
   return $export;
 }
